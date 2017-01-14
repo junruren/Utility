@@ -50,4 +50,4 @@ map <F10> <Esc>setlocal spell spelllang=en_us<CR>
 map <F11> <Esc>setlocal nospell<CR>
 
 " setlocal textwidth=80		" used for text wrapping
-match ErrorMsg '\%>80v.\+'	" Highlight character on the 80th column red
+match ErrorMsg '\%>80v.\+'	" Highlight character after the 80th column red
