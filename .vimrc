@@ -1,7 +1,7 @@
 " ~/.vimrc
 " Updated by Junru Thomas Ren
-" Jan 14, 2017
-" Originally by Lisa McCutcheon
+" Jan 15, 2017
+" Based on the original .vimrc by Lisa McCutcheon
 
 " **************************************
 " * VARIABLES
@@ -51,3 +51,19 @@ map <F11> <Esc>setlocal nospell<CR>
 
 " setlocal textwidth=80		" used for text wrapping
 match ErrorMsg '\%>80v.\+'	" Highlight character after the 80th column red
+
+" Insert a file header (UC San Diego CSE 30 version) via F9
+function FileHeading()
+	let s:line=line(".")
+	call setline (s:line,   "/*")
+	call append  (s:line,   " * Filename: " .expand("%"))
+	call append  (s:line+1, " * Author: Junru Ren")
+	call append  (s:line+2, " * Userid: cs30xxx")
+	call append  (s:line+3, " * Description: TODO")
+	call append  (s:line+4, " * Date: " .strftime("%b %d %Y"))
+	call append  (s:line+5, " * Sources of Help: TODO")
+	call append  (s:line+6, " */")
+	unlet s:line
+endfunction
+
+imap <F9> <ESC>mz:execute FileHeading()<CR>
