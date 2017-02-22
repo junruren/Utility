@@ -21,9 +21,14 @@ set nojoinspaces		" don't add white space when I don't tell you to
 set ruler			" which line am I on?
 set showmatch			" ensure Dyck language
 set incsearch			" incremental searching
-set nohlsearch			" meh
+"set nohlsearch			" meh
 set bs=2			" fix backspacing in insert mode
 set bg=light
+set mouse=a
+
+" change tabstop width for python files
+autocmd BufRead,BufNewFile *.py set tabstop=4
+autocmd BufRead,BufNewFile *.py set shiftwidth=4
 
 " Expand tabs in C files to spaces
 au BufRead,BufNewFile *.{c,h,java} set expandtab
