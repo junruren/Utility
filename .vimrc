@@ -24,8 +24,9 @@ set incsearch			" incremental searching
 "set nohlsearch			" meh
 set bs=2			" fix backspacing in insert mode
 set bg=light
-set mouse=a
-set tabpagemax=100
+set mouse=a			" allow mouse clicks
+set tabpagemax=100		" allow up to 100 tabs opened when using -p flag
+set formatoptions+=r		" auto asterisk in C style block comments
 
 " change tabstop width for python files
 autocmd BufRead,BufNewFile *.py set tabstop=4
