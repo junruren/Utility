@@ -25,6 +25,7 @@ set incsearch			" incremental searching
 set bs=2			" fix backspacing in insert mode
 set bg=light
 set mouse=a
+set tabpagemax=100
 
 " change tabstop width for python files
 autocmd BufRead,BufNewFile *.py set tabstop=4
