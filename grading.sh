@@ -48,3 +48,8 @@ vim -p *.s
 
 clear
 ./99_ulimit_test.sh.self
+echo *** Ref ***
+cat RESULT.ulimit_test.refsol
+echo --- Stu ---
+cat RESULT.ulimit_test.student
+echo === END ===
