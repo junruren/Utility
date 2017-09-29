@@ -59,13 +59,13 @@ map <F11> <Esc>setlocal nospell<CR>
 " setlocal textwidth=80		" used for text wrapping
 match ErrorMsg '\%>80v.\+'	" Highlight character after the 80th column red
 
-" Insert a file header (UC San Diego CSE 30 version) via F9
+" Insert a file header (UC San Diego CSE 11 version) via F9
 function FileHeading()
 	let s:line=line(".")
 	call setline (s:line,   "/*")
 	call append  (s:line,   " * Filename: " .expand("%"))
 	call append  (s:line+1, " * Author: TODO")
-	call append  (s:line+2, " * Userid: cs30xxx")
+	call append  (s:line+2, " * Userid: cs11fxxx")
 	call append  (s:line+3, " * Description: TODO")
 	call append  (s:line+4, " * Date: " .strftime("%b %d %Y"))
 	call append  (s:line+5, " * Sources of Help: TODO")
