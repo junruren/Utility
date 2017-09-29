@@ -1,6 +1,6 @@
 " ~/.vimrc
 " Updated by Junru Thomas Ren
-" Apr 09, 2017
+" Sept 28, 2017
 " Based on the original .vimrc by Lisa McCutcheon
 
 " **************************************
