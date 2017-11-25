@@ -1,5 +1,5 @@
 import sys
-
+from collections import defaultdict
 from os import walk, path
 
 class bcolors:
@@ -17,35 +17,42 @@ source_extensions = [".java", "README"]
 
 def main():
 	source_filenames = make_source_filenames()
+	char_string = "[80 Chars] (-X): "
+	tab_string = "[Indentations] (-X): tabs found at "
 	for source_filename in source_filenames:
 		source_file = open(source_filename, "r")
 		line_count = 1
-		lines_have_tabs = []
-		lines_over_80 = []
+		lines_have_tabs = defaultdict(set)
+		lines_over_80 = defaultdict(set)
 		for line in source_file:
 			if "\t" in line:
-				lines_have_tabs.append(line_count)
+				lines_have_tabs[source_filename].add(line_count)
 			if len(line) > 80:
-				lines_over_80.append(line_count)
+				lines_over_80[source_filename].add(line_count)
 			line_count += 1
-		if len(lines_over_80) > 0:
-			print(
-					source_filename 
-					+ bcolors.FAIL
-					+ " exceeds 80 chars"
-					+ bcolors.ENDC
-					+ " at line " 
-					+ str(lines_over_80)
-				)
-		if len(lines_have_tabs) > 0:
-			print(
-					source_filename 
-					+ bcolors.FAIL 
-					+ " has tabs"
-					+ bcolors.ENDC
-					+ " at line " 
-					+ str(lines_have_tabs) 
-				)
+		source_file.close()
+	# print results
+	for (filename, lines) in lines_have_tabs.items():
+		tab_string += filename[2:] + ":"
+		line_str = ""
+		for (idx, line) in enumerate(list(lines)):
+			line_str += str(line)
+			if idx < len(lines) - 1:
+				line_str += ", "
+		tab_string += line_str + "; "
+	for (filename, lines) in lines_over_80.items():
+		char_string += filename[2:] + ":"
+		line_str = ""
+		for (idx, line) in enumerate(list(lines)):
+			line_str += str(line)
+			if idx < len(lines) - 1:
+				line_str += ", "
+		char_string += line_str + "; "
+	if len(lines_over_80):
+		print(char_string)
+	if len(lines_have_tabs):
+		print(tab_string)
+
 
 def make_source_filenames():
 	source_filenames = []
