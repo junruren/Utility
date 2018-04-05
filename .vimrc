@@ -21,12 +21,19 @@ set nojoinspaces		" don't add white space when I don't tell you to
 set ruler			" which line am I on?
 set showmatch			" ensure Dyck language
 set incsearch			" incremental searching
-"set nohlsearch			" meh
+set hlsearch			" highlight the result of a search using / or ?
 set bs=2			" fix backspacing in insert mode
 set bg=light
 set mouse=a			" allow mouse clicks
 set tabpagemax=100		" allow up to 100 tabs opened when using -p flag
 set formatoptions+=r		" auto asterisk in C style block comments
+
+" This could hurt your eyes when reading the code but help visualizes tabs you
+" have. Remember: NO TABs in C source files; USE TABs for indentations in .s!
+set list
+set listchars=tab:>-
+" Well if you don't like the settings above, simply add " in the front to 
+" comment them out.
 
 " change tabstop width for python files
 autocmd BufRead,BufNewFile *.py set tabstop=4
